@@ -1,0 +1,8 @@
+all:
+ vars: # On définit des variables globales appliquées à l'ensemble des hôtes
+   ansible_user: admin # Indique à Ansible de se connecter sur la machine distante avec l'utilisateur nommé admin
+   ansible_ssh_private_key_file: ~/.ssh/id_tpdevops # Spécifie le chemin local de la clé SSH privée
+   dockerhub_username: kmzx
+ children: # Permet de créer des groupes logiques de serveurs.
+   prod: # On a créé un groupe nommé prod
+     hosts: mohamed.laidouni.takima.school # On a défini un hôte nommé mohamed.laidouni.takima.school

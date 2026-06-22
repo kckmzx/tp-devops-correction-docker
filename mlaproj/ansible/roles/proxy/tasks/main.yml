@@ -1,0 +1,12 @@
+---
+- name: Launch httpd proxy
+  community.docker.docker_container:
+    name: httpd
+    image: "{{ dockerhub_username }}/tp-devops-simple-httpd:latest"
+    networks:
+      - name: app-network
+    ports:
+      - "80:80"
+    state: started
+    recreate: true
+    pull: true

@@ -1,0 +1,16 @@
+- hosts: all
+  gather_facts: true
+  become: true
+  roles:
+    - docker
+
+- hosts: all
+  gather_facts: false
+  become: true
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
+  roles:
+    - network
+    - database
+    - app
+    - proxy
