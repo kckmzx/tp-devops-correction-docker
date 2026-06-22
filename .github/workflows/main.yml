@@ -109,8 +109,8 @@ jobs:
         - name: Set up SSH key
           run: |
             mkdir -p ~/.ssh
-            echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-            chmod 400 ~/.ssh/id_rsa
+            echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_tpdevops
+            chmod 400 ~/.ssh/id_tpdevops
             ssh-keyscan -H ${{ secrets.ANSIBLE_HOST }} >> ~/.ssh/known_hosts
 
         - name: Install Ansible
@@ -120,4 +120,4 @@ jobs:
 
         - name: Run Ansible Playbook
           run: |
-            ansible-playbook -i mlaproj/ansible/inventories/setup.yml ansible/playbook.yml --private-key ~/.ssh/id_rsa
+            ansible-playbook -i mlaproj/ansible/inventories/setup.yml mlaproj/ansible/playbook.yml --private-key ~/.ssh/id_tpdevops
